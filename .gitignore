@@ -1,0 +1,6 @@
+rangel/__pycache__/
+.eggs/
+build/
+dist/
+rangel.egg-info/
+teste*
