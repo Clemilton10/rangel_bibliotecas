@@ -19,7 +19,7 @@ def outraRota(funcao, *args):
 
 def executar(exe):
 	try:
-		self.outraRota(executar_rp, exe)
+		outraRota(executar_rp, exe)
 	except Exception as er:
 		print('executar:')
 		print(er)
