@@ -102,6 +102,6 @@ def excluir(arquivo, separador, tx):
 		df.to_csv(arquivo, index=None, header=True, sep=separador)
 		return {'sucesso': 1}
 	except Exception as er:
-		print('editar:')
+		print('excluir:')
 		print(er)
 		return {'sucesso': 0, 'erro': er}
