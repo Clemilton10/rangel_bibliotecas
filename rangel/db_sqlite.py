@@ -1,3 +1,4 @@
+import sqlite3
 class db_sqlite():
 	cx = None
 	cursor = None

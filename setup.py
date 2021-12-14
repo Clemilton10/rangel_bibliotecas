@@ -13,7 +13,7 @@ from setuptools import find_packages, setup
 setup(
     name='rangel',
     packages=find_packages(),
-    version='0.1.3',
+    version='0.1.4',
     description='Bibliotecas Rangel',
     author='Clemas',
     license='MIT',
