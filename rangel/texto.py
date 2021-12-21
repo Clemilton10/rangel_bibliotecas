@@ -92,6 +92,38 @@ def limpar(t) -> str:
 		t = t.replace(' no ', ' ')
 		t = t.replace(' na ', ' ')
 		t = t.replace(' em ', ' ')
+
+		if \
+		t.find('e ') == 0 or \
+		t.find('a ') == 0 or \
+		t.find('o ') == 0 or \
+		t.find('as ') == 0 or \
+		t.find('os ') == 0 or \
+		t.find('do ') == 0 or \
+		t.find('da ') == 0 or \
+		t.find('de ') == 0 or \
+		t.find('no ') == 0 or \
+		t.find('na ') == 0 or \
+		t.find('em ') == 0:
+			l = len(t)
+			p = t.find(' ')
+			t = t[ p + 1 : l - (p + 1) ]
+
+		if \
+		t.rfind(' e') >- 1 or \
+		t.rfind(' a') >- 1 or \
+		t.rfind(' o') >- 1 or \
+		t.rfind(' as') >- 1 or \
+		t.rfind(' os') >- 1 or \
+		t.rfind(' do') >- 1 or \
+		t.rfind(' da') >- 1 or \
+		t.rfind(' de') >- 1 or \
+		t.rfind(' no') >- 1 or \
+		t.rfind(' na') >- 1 or \
+		t.rfind(' em') >- 1:
+			p = t.rfind(' ')
+			t = t[ 0 : p ]
+
 		return t
 	except Exception as er:
 		print('limpar:')

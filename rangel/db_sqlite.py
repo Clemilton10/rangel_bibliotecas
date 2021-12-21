@@ -15,9 +15,9 @@ class db_sqlite():
 
 	def query(self, sql):
 		try:
-			if sql.lower().find('select') <= 1:
-				rs = c.execute(sql)
-				self.colunas = [description[0] for description in c.description]
+			if sql.lower().find('select') > -1 and sql.lower().find('select') <= 1:
+				rs = self.cursor.execute(sql)
+				self.colunas = [description[0] for description in self.cursor.description]
 				tmp = []
 				for i, r in enumerate(rs):
 					tmp.append({})
@@ -27,9 +27,10 @@ class db_sqlite():
 				rs = tmp
 				return rs
 			else:
-				rs = c.execute(sql)
+				rs = self.cursor.execute(sql)
+				self.cx.commit()
 				return True
 		except Exception as er:
-			print('db.conectar:')
+			print('db.query:')
 			print(er)
 			return False
