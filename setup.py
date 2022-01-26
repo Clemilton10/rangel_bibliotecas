@@ -6,6 +6,9 @@
 # 2- Para renderizar
 # python setup.py bdist_wheel
 
+# 2b- Renderizar zip
+# python setup.py sdist
+
 # 3- para instalar
 # pip install rangel.whl
 
