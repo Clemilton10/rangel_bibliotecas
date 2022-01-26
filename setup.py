@@ -1,16 +1,20 @@
-# pip3 install wheel
+# py -m pip3 install wheel
 
 # 1- Para testar
-# python setup.py pytest
+# py setup.py pytest
 
 # 2- Para renderizar
-# python setup.py bdist_wheel
+# py setup.py bdist_wheel
 
 # 2b- Renderizar zip
 # python setup.py sdist
 
 # 3- para instalar
-# pip install rangel.whl
+# py -m pip install rangel.whl
+
+# 4- enviar
+# py -m twine upload dist/* --repository-url https://test.pypi.org/legacy/ --verbose --user Clemas --password klemas277908
+# py -m twine upload dist/* --repository-url https://upload.pypi.org/legacy/ --verbose --user Clemas --password klemas277908
 
 from setuptools import find_packages, setup
 setup(
