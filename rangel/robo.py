@@ -7,6 +7,7 @@ from time import sleep
 import pyttsx3
 #from os.path import dirname, realpath #, abspath
 #from sys import platform
+from pynput import mouse
 
 class robo:
 	pa = None
@@ -15,6 +16,7 @@ class robo:
 	pressionar = None
 	clicar = None
 	boca = None
+	xy = [0, 0]
 
 	def __init__(self):
 		try:
@@ -74,11 +76,14 @@ class robo:
 		print('r.mover_clicar(500, 300)')
 		print('r.clicar(500, 300)')
 		print('r.clicar_direito(500, 300)')
-		print('p = r.posicao()')
+		print('p = r.posicao(12)')
 		print('r.ap_bt_esquerdo()')
 		print('r.st_bt_esquerdo()')
 		print('r.ap_bt_direito()')
 		print('r.st_bt_direito()')
+		print()
+		print('r.capturar_click()')
+		print('p = r.xy')
 		print()
 
 	def clicar_direito(self, x, y):
@@ -201,9 +206,9 @@ class robo:
 			print('robo.mover:')
 			print(er)
 
-	def posicao(self):
+	def posicao(self, q_vezes):
 		try:
-			self.tempo_voz(5)
+			self.tempo_voz(q_vezes)
 			p = self.pa.position()
 			p = list(p)
 			return p
@@ -239,3 +244,28 @@ class robo:
 		except Exception as er:
 			print('robo.st_bt_direito:')
 			print(er)
+
+	def on_click(self, x, y, button, pressed):
+		try:
+			if button == mouse.Button.left:
+				self.xy = [x, y]
+			return False
+		except Exception as er:
+			print('robo.on_click:')
+			print(er)
+			return False
+
+	def capturar_click(self):
+		try:
+			self.falar('Clique na posição')
+			self.xy = [0, 0]
+			listener = mouse.Listener(on_click=self.on_click)
+			listener.start()
+			listener.join()
+		except Exception as er:
+			print('robo.capturar_click:')
+			print(er)
+			self.falar('Não consegui pegar')
+		finally:
+			self.falar('Capturei a posição')
+
