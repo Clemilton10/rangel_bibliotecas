@@ -1,4 +1,12 @@
-def dia_semana(ds) -> str:
+def dia_semana(ds: str)->str:
+	'''Função converte um dia da semana em inglês em português
+
+	Parameters:
+		ds (str): Dia da semana em inglês para converter para português
+
+	Returns:
+		ds (str): Dia da semana em português
+	'''
 	dso = ds
 	try:
 		ds = ds.lower()
@@ -11,7 +19,15 @@ def dia_semana(ds) -> str:
 		print(er)
 		return dso
 
-def data_extenso(dt) -> str:
+def data_extenso(dt: str)->str:
+	'''Função que converte uma data com barras para extenso
+
+	Parameters:
+		dt (str): Data no formato "dd/mm/aaaa" para ser convertida
+
+	Returns:
+		dt (str): Data convertida para o formato "dd de nome_mes de aaaa"
+	'''
 	dto = dt
 	try:
 		meses = [

@@ -10,7 +10,26 @@ class mysqli:
 	passwd   = ''
 	database = ''
 
-	def ler_arquivo(self, arquivo):
+	def __init__(self):
+		'''Classe para conversar com banco de dados MySQL
+
+		Variables:
+			host (str): url do MySQL
+			user (str): usuário do banco de dados
+			passwd (str): senha do bando de dados
+			database (str): nome do banco de dados
+		'''
+		pass
+
+	def ler_arquivo(self, arquivo: str)->str:
+		'''Função que lê um arquivo
+
+		Parameters:
+			arquivo (str): nome do arquivo a ser lido
+
+		Returns:
+			texto (str): texto do arquivo lido
+		'''
 		try:
 			f = open(arquivo, 'r', encoding='utf8');
 			t = f.read();
@@ -21,7 +40,15 @@ class mysqli:
 			print(er)
 			return ''
 
-	def ler_json(self, arquivo):
+	def ler_json(self, arquivo: str):
+		'''Função que lê um arquivo e converte para um dicionario ou uma lista de dicionários
+
+		Parameters:
+			arquivo (str): nome do arquivo a ser lido
+
+		Returns:
+			lista (dict/list): Dicionário ou lista de dicionário
+		'''
 		try:
 			tx = self.ler_arquivo(arquivo)
 			js = loads(tx)
@@ -32,6 +59,7 @@ class mysqli:
 			return []
 
 	def carregar_configuracoes(self):
+		'''Função que lê automaticamente o arquivo com as configurações do banco'''
 		try:
 			js = self.ler_json('mysqli_configuracoes.json')
 			self.host     = js['host']
@@ -44,6 +72,7 @@ class mysqli:
 			return []
 
 	def conectar(self):
+		'''Função que conecta ao banco de dados'''
 		try:
 			self.db  = mysql.connector.connect(
 				host     = self.host,
@@ -56,7 +85,19 @@ class mysqli:
 			print('conectar:')
 			print(er)
 
-	def squery(self, sql):
+	def squery(self, sql: str)->dict:
+		'''Função que executa uma consulta (select)
+
+		Parameters:
+			sql (str): SQL para consultar (select)
+
+		Returns:
+			dicionario (dict): {}
+				sql (str): SQL para consultar (select)
+				colunas (str): Nome das colunas obitidas
+				linhas (list): Lista com registros encontrados
+				sucesso (bool): Se a consulta ocorrer sem problema retorna True
+		'''
 		try:
 			self.cursor.execute(sql)
 			rs = self.cursor.fetchall()
@@ -84,7 +125,17 @@ class mysqli:
 			print(er)
 			return {'sql': sql, 'colunas': [],'linhas': [], 'sucesso': False}
 
-	def equery(self, sql):
+	def equery(self, sql: str)->dict:
+		'''Função que serve para executar ações no banco de dados (insert, update, delete)
+
+		Parameters:
+			sql (str): SQL para executar ações no banco de dados (insert, update, delete)
+
+		Returns:
+			dicionario (dict): {}
+				sql: SQL para executar ações no banco de dados (insert, update, delete)
+				sucesso (bool): Se a ação ocorrer sem problema retorna True
+		'''
 		try:
 			self.cursor.execute(sql)
 			self.db.commit()
@@ -94,10 +145,21 @@ class mysqli:
 			print(er)
 			return {'sql': sql, 'sucesso': False}
 
-	def vquery(self, sql, val):
+	def vquery(self, sql: str, val: tuple)->dict:
+		'''Função que serve para executar ações no banco de dados (insert, update, delete) passando valores separados
+
+		Parameters:
+			sql (str): SQL para executar ações no banco de dados (insert, update, delete)
+				"INSERT INTO usuario (nome, email) VALUES (%s, %s)"
+			val (tuple): Tupla com valores para ação
+				("clemas", "clemas.web@gmail.com")
+
+		Returns:
+			dicionario (dict): {}
+				sql: SQL para executar ações no banco de dados (insert, update, delete)
+				sucesso (bool): Se a ação ocorrer sem problema retorna True
+		'''
 		try:
-			# sql = "INSERT INTO usuario (nome, email) VALUES (%s, %s)"
-			# val = ("clemas", "clemas.web@gmail.com")
 			self.cursor.execute(sql, val)
 			self.db.commit()
 			return {'sql': sql, 'valores': val, 'sucesso': True}

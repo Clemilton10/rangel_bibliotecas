@@ -19,6 +19,17 @@ class robo:
 	xy = [0, 0]
 
 	def __init__(self):
+		'''Classe que automatiza tarefas assumindo o teclado e mouse
+
+		Variables:
+			pa (pyautogui): Biblioteca que assume o teclado e mouse
+			pc (pyperclip): Biblioteca que em casos de caracteres especiais que o pyautogui não consegue digitar, substitui copiando e colando
+			teclar (function): Função que serve para presionar e soltar uma ou mais teclas combinadas
+			pressionar (function): Função que serve para pressionar uma tecla
+			clicar (function): Função que serve para clicar em uma coordenada
+			boca (pyttsx3): Driver para reproduzir a fala humana
+			xy (list): Lista de coordenadas (x e y)
+		'''
 		try:
 			self.pa = pa
 			self.pc = pc
@@ -86,14 +97,25 @@ class robo:
 		print('p = r.xy')
 		print()
 
-	def clicar_direito(self, x, y):
+	def clicar_direito(self, x: float, y: float):
+		'''Função que assume o mouse e clica com botão direito nas coordenadas
+
+		Parameters:
+			x (float): Posição X para o clique
+			y (float): Posição Y para o clique
+		'''
 		try:
 			self.pa.click(x=x, y=y, button='right')
 		except Exception as er:
 			print('robo.clicar_direito:')
 			print(er)
 
-	def falar(self, fala):
+	def falar(self, fala: str):
+		'''Função que simula a fala humana
+
+		Parameters:
+			fala (str): Texto para ser narrado
+		'''
 		try:
 			self.boca.say(fala)
 			self.boca.runAndWait()
@@ -101,7 +123,12 @@ class robo:
 			print('robo.falar:')
 			print(er)
 
-	def tempo_voz(self, qtd_vezes):
+	def tempo_voz(self, qtd_vezes: int):
+		'''Função que narra e espera alguns segundos antes da próxima tarefa
+
+		Parameters:
+			qtd_vezes (int): Quantidade de segundos que o programa vai esperar e narrar
+		'''
 		try:
 			for i in range(1, qtd_vezes + 1):
 				print(i)
@@ -110,7 +137,12 @@ class robo:
 			print('robo.tempo:')
 			print(er)
 
-	def tempo(self, qtd_vezes):
+	def tempo(self, qtd_vezes: int):
+		'''Função que espera alguns segundos antes da próxima tarefa
+
+		Parameters:
+			qtd_vezes (int): Quantidade de segundos que o programa vai esperar e narrar
+		'''
 		try:
 			for i in range(1, qtd_vezes + 1):
 				print(i)
@@ -119,7 +151,12 @@ class robo:
 			print('robo.tempo:')
 			print(er)
 
-	def digitar(self, texto):
+	def digitar(self, texto: str):
+		'''Função que assume o teclado e digita o texto
+
+		Parameters:
+			texto (str): Texto a ser digitado
+		'''
 		try:
 			antes = 'x'
 			lista = []
@@ -156,7 +193,16 @@ class robo:
 			print('digitar:')
 			print(er)
 
-	def posicao_imagem(self, im, q_vezes):
+	def posicao_imagem(self, im: str, q_vezes: int)->list:
+		'''Função que busca a posição central de uma imagem na tela
+
+		Parameters:
+			im (str): Caminho da imagem a ser procurada
+			q_vezes (int): Quantidade de tentativas
+
+		Returns:
+			posicao (list): Coordenadas [X, Y]
+		'''
 		try:
 			procurar_imagem = True
 			i = [-1 , -1]
@@ -191,22 +237,42 @@ class robo:
 			print(er)
 			return [-1, -1]
 
-	def mover(self, xx, yy):
+	def mover(self, x: float, y: float):
+		'''Função que assume o mouse e reposiciona nas coordenadas
+
+		Parameters:
+			x (float): Posição X
+			y (float): Posição Y
+		'''
 		try:
-			self.pa.moveTo(x=xx, y=yy, duration=0.2)
+			self.pa.moveTo(x=x, y=y, duration=0.2)
 		except Exception as er:
 			print('robo.mover:')
 			print(er)
 
-	def mover_clicar(self, xx, yy):
+	def mover_clicar(self, x: float, y: float):
+		'''Função que assume o mouse, reposiciona nas coordenadas e clica
+
+		Parameters:
+			x (float): Posição X
+			y (float): Posição Y
+		'''
 		try:
-			self.pa.moveTo(x=xx, y=yy, duration=0.2)
-			self.pa.click(x=xx, y=yy)
+			self.pa.moveTo(x=x, y=y, duration=0.2)
+			self.pa.click(x=x, y=y)
 		except Exception as er:
 			print('robo.mover:')
 			print(er)
 
-	def posicao(self, q_vezes):
+	def posicao(self, q_vezes: int)->list:
+		'''Função que espera um certo tempo e pega a posição em que o mouse estiver
+
+		Parameters:
+			q_vezes (int): Quantidade de segundos que deve narrar e esperar antes de pegar a posição
+
+		Returns:
+			posicao (list): Posição do mouse [X, Y]
+		'''
 		try:
 			self.tempo_voz(q_vezes)
 			p = self.pa.position()
@@ -218,6 +284,7 @@ class robo:
 			return [0, 0]
 
 	def ap_bt_esquerdo(self):
+		'''Função que assume o mouse, clica com botão esquerdo e o mantém pressionado'''
 		try:
 			self.pa.mouseDown()
 		except Exception as er:
@@ -225,6 +292,7 @@ class robo:
 			print(er)
 
 	def st_bt_esquerdo(self):
+		'''Função que assume o mouse, e solta o botão esquerdo pressionado'''
 		try:
 			self.pa.mouseUp()
 		except Exception as er:
@@ -232,6 +300,7 @@ class robo:
 			print(er)
 
 	def ap_bt_direito(self):
+		'''Função que assume o mouse, clica com botão direito e o mantém pressionado'''
 		try:
 			self.pa.mouseDown(button='right')
 		except Exception as er:
@@ -239,6 +308,7 @@ class robo:
 			print(er)
 
 	def st_bt_direito(self):
+		'''Função que assume o mouse, e solta o botão direito pressionado'''
 		try:
 			self.pa.mouseUp(button='right')
 		except Exception as er:
@@ -246,6 +316,7 @@ class robo:
 			print(er)
 
 	def on_click(self, x, y, button, pressed):
+		'''Função que pega o evento de clique do botão esquerdo do mouse e armazena em self.xy'''
 		try:
 			if button == mouse.Button.left:
 				self.xy = [x, y]
@@ -256,6 +327,7 @@ class robo:
 			return False
 
 	def capturar_click(self):
+		'''Função que inicia a escuta dos cliques com botão esquerdo do mouse para armazenar em self.xy'''
 		try:
 			self.falar('Clique na posição')
 			self.xy = [0, 0]

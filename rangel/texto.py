@@ -2,7 +2,20 @@ import unidecode
 import json
 import re
 
-def formatar(tx, j) -> str:
+def formatar(tx: str, j: 'dict {tirarLetras (str), maiusculo (str), minusculo (str), tirarNumeros (str), manterCaracteres}') -> str:
+	'''Trata uma string
+
+	Parameters:
+		j (dict): {}
+			j['tirarLetras'] (str): retira todas as letras
+			j['maiusculo'] (str): converte a string para maiúsculo
+			j['minusculo'] (str): converte a string para minúsculo
+			j['tirarNumeros'] (str): retira todos os números
+			j['manterCaracteres'] (str): todos os caracteres que não forem informados serão retirados com exceção de letras e números que devem ser informados como descrito acima
+
+	Returns:
+		resultado (str): retorna a string tratada/convertida
+	'''
 	st = str(tx);
 	if not 'tirarLetras' in j or not j['tirarLetras']:
 		if not 'manterAcentos' in j or not j['manterAcentos']:
@@ -39,7 +52,15 @@ def formatar(tx, j) -> str:
 
 	return st
 
-def texNum(indice) -> int:
+def texNum(indice: str) -> int:
+	'''Converte um número por extenso para um inteiro
+
+	Parameters:
+		indice (str): numero por extenso que vai se tornar um inteiro
+
+	Returns:
+		resultado (int): numero inteiro convertido
+	'''
 	try:
 		indice = indice.strip()
 		if indice.isalpha():
@@ -76,7 +97,15 @@ def texNum(indice) -> int:
 		print(er)
 		return 0
 
-def limpar(t) -> str:
+def limpar(t: str) -> str:
+	'''Retira as conjuções para deixar o texto limpo para comparações
+
+	Parameters:
+		t (str): texto cru
+
+	Returns:
+		resultado (str): texto limpo sem (e, a, o, as, os, do, da, de, no, na, em)
+	'''
 	original = t
 	try:
 		t = formatar(t, {'minusculo': True, 'manterCaracteres': '|:; '})
@@ -130,7 +159,16 @@ def limpar(t) -> str:
 		print(er)
 		return original
 
-def comparar(a, b) -> float:
+def comparar(a: str, b: str) -> float:
+	'''Percorre o texto, palavra por palavra verificando se são iguais, retorna o percentual de similaridade
+
+	Parameters:
+		a (str): primeiro texto a ser comparado
+		b (str): segundo texto a ser comparado
+
+	Returns:
+		percentual (float): percentual de similaridade de uma string com a outra
+	'''
 	try:
 		a  = limpar(a)
 		b  = limpar(b)
