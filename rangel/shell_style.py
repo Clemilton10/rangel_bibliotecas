@@ -102,7 +102,6 @@ class shell_style:
 		'''Classe para tratar de cores e estilos para o Shell
 
 		Variables (str):
-			ESC
 
 			# Cor da Fonte (Foreground)
 			CF_PRETA

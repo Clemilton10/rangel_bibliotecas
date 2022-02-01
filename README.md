@@ -1,6 +1,9 @@
 # Rangel
 
-**Rangel** é um conjunto de bibliotecas em português para facilitar o dia a dia.
+**Rangel** é um conjunto de bibliotecas em português para facilitar o dia a dia.<br>
+<br>
+Link da última versão<br>
+https://test.pypi.org/project/rangel/0.3.6/
 
 ### Importação total
 ~~~python
@@ -162,4 +165,107 @@ a = m.raio_area(raio) # Calcula a área de um raio
 c = m.raio_circunferencia(raio) # Calcula a circunferência de um raio
 r = m.area_raio(area) # Calcula um raio de uma área
 r = m.circunferencia_raio(circunferencia) # Calcula um raio de uma circunferência
+~~~
+
+### rangel.shell_style
+~~~python
+ss = shell_style()
+
+# VARIAVEIS DISPONIVEIS
+    # Cor da Fonte (Foreground)
+    CF_PRETA
+    CF_VERMELHA
+    CF_VERDE
+    CF_AMARELA
+    CF_AZUL
+    CF_MAGENTA
+    CF_CIANO
+    CF_BRANCA
+
+    CFB_PRETA
+    CFB_VERMELHA
+    CFB_VERDE
+    CFB_AMARELA
+    CFB_AZUL
+    CFB_MAGENTA
+    CFB_CIANO
+    CFB_BRANCA
+
+    # Fundos (Background)
+    FD_PRETA
+    FD_VERMELHA
+    FD_VERDE
+    FD_AMARELA
+    FD_AZUL
+    FD_MAGENTA
+    FD_CIANO
+    FD_BRANCA
+
+    FDB_PRETA
+    FDB_VERMELHA
+    FDB_VERDE
+    FDB_AMARELA
+    FDB_AZUL
+    FDB_MAGENTA
+    FDB_CIANO
+    FDB_BRANCA
+
+    # Efeitos
+    UNDERLINE
+    ITALICO
+    NEGRITO
+    SLOW_BLINK
+    RAPID_BLINK
+
+    # Ícones
+    PLACA         ⚠
+    TRIANGULO1    ▲
+    TRIANGULO2    ∆
+    XIS           ✖
+    LAPIS         ✎
+    CHECADO       ✔
+    RAIZ_QUADRADA √
+    MENOR_MENOR   «
+    MAIOR_MAIOR   »
+    AO_QUADRADO   ²
+    ALFA          α
+    BETA          β
+    OMEGA         Ω
+    TIL           ∼
+    ENTER         ↳
+    TAB           ⇄
+    SETA1         ➝
+    SETA2         ➜
+    SETA3         ➞
+    SETA4         ⇒
+    SETA5         ➼
+    SETA6         ➤
+    TECLADO       ⌨
+    RELOGIO       ⌚
+    AMPULIETA     ⌛
+    TELEFONE      ☎
+    FERRAMENTAS   ⚒
+    CAMINHAO      ⛟
+    AVIAO         ✈
+    CARTA         ✉
+    DIAMENTE      ❖
+    LOZANGULO     ⬧
+    MAO           ☛
+    SUSTENIDO     ♯
+
+    # Status
+    ALERTA
+    ERRO
+    PERGUNTA
+    FINALIZADO
+
+    # Reset
+    NONE
+            
+ss.extrair_tupla( ('Jozé ambrósio', '42 Anos') , ' ') # Converte uma Tupla para string 
+# Resultado: 'Jozé ambrósio 42 Anos'
+
+ss.print('Jozé ambrósio', '42 Anos', cor=ss.CF_VERMELHA, efeito=ss.ITALICO)
+
+ss.input('Digite seu nome:', cor=ss.CF_VERMELHA, efeito=ss.ITALICO)
 ~~~
