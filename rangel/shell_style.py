@@ -7,34 +7,51 @@ mode.value |= 4;
 kernel32.SetConsoleMode(hStdOut, mode)
 
 class shell_style:
-	ESC = '\x1b['
 
 	# Cor da Fonte (Foreground)
-	CF_PRETA    = f'{ESC}30m'
-	CF_BRANCA   = f'{ESC}37m'
-	CF_AMARELA  = f'{ESC}93m'
-	CF_MAGENTA  = f'{ESC}95m'
-	CF_AZUL     = f'{ESC}94m'
-	CF_VERDE    = f'{ESC}92m'
-	CF_VERMELHA = f'{ESC}91m'
-	CF_CIANO    = f'{ESC}96m'
+	CF_PRETA    = f'\033[30m'
+	CF_VERMELHA = f'\033[31m'
+	CF_VERDE    = f'\033[32m'
+	CF_AMARELA  = f'\033[33m'
+	CF_AZUL     = f'\033[34m'
+	CF_MAGENTA  = f'\033[35m'
+	CF_CIANO    = f'\033[36m'
+	CF_BRANCA   = f'\033[37m'
+
+	CFB_PRETA    = f'\033[90m'
+	CFB_VERMELHA = f'\033[91m'
+	CFB_VERDE    = f'\033[92m'
+	CFB_AMARELA  = f'\033[93m'
+	CFB_AZUL     = f'\033[94m'
+	CFB_MAGENTA  = f'\033[95m'
+	CFB_CIANO    = f'\033[96m'
+	CFB_BRANCA   = f'\033[97m'
 
 	# Fundos (Background)
-	FD_PRETA    = f'{ESC}100m'
-	FD_BRANCA   = f'{ESC}107m'
-	FD_AMARELA  = f'{ESC}103m'
-	FD_MAGENTA  = f'{ESC}105m'
-	FD_AZUL     = f'{ESC}104m'
-	FD_VERDE    = f'{ESC}102m'
-	FD_VERMELHA = f'{ESC}101m'
-	FD_CIANO    = f'{ESC}106m'
+	FD_PRETA    = f'\033[40m'
+	FD_VERMELHA = f'\033[41m'
+	FD_VERDE    = f'\033[42m'
+	FD_AMARELA  = f'\033[43m'
+	FD_AZUL     = f'\033[44m'
+	FD_MAGENTA  = f'\033[45m'
+	FD_CIANO    = f'\033[46m'
+	FD_BRANCA   = f'\033[47m'
+
+	FDB_PRETA    = f'\033[100m'
+	FDB_VERMELHA = f'\033[101m'
+	FDB_VERDE    = f'\033[102m'
+	FDB_AMARELA  = f'\033[103m'
+	FDB_AZUL     = f'\033[104m'
+	FDB_MAGENTA  = f'\033[105m'
+	FDB_CIANO    = f'\033[106m'
+	FDB_BRANCA   = f'\033[107m'
 
 	# Efeitos
-	UNDERLINE   = f'{ESC}4m'
-	ITALICO     = f'{ESC}3m'
-	NEGRITO     = f'{ESC}1m'
-	SLOW_BLINK  = f'{ESC}5m'
-	RAPID_BLINK = f'{ESC}6m'
+	UNDERLINE   = f'\033[4m'
+	ITALICO     = f'\033[3m'
+	NEGRITO     = f'\033[1m'
+	SLOW_BLINK  = f'\033[5m'
+	RAPID_BLINK = f'\033[6m'
 
 	# Ícones
 	PLACA         = '⚠'
@@ -79,7 +96,7 @@ class shell_style:
 	FINALIZADO = f'{CF_VERDE}{CHECADO} '
 
 	# Reset
-	NONE = f'{ESC}0m'
+	NONE = f'\033[0m'
 
 	def __init__(self):
 		'''Classe para tratar de cores e estilos para o Shell
@@ -89,23 +106,41 @@ class shell_style:
 
 			# Cor da Fonte (Foreground)
 			CF_PRETA
-			CF_BRANCA
-			CF_AMARELA
-			CF_MAGENTA
-			CF_AZUL
-			CF_VERDE
 			CF_VERMELHA
+			CF_VERDE
+			CF_AMARELA
+			CF_AZUL
+			CF_MAGENTA
 			CF_CIANO
+			CF_BRANCA
+
+			CFB_PRETA
+			CFB_VERMELHA
+			CFB_VERDE
+			CFB_AMARELA
+			CFB_AZUL
+			CFB_MAGENTA
+			CFB_CIANO
+			CFB_BRANCA
 
 			# Fundos (Background)
 			FD_PRETA
-			FD_BRANCA
-			FD_AMARELA
-			FD_MAGENTA
-			FD_AZUL
-			FD_VERDE
 			FD_VERMELHA
+			FD_VERDE
+			FD_AMARELA
+			FD_AZUL
+			FD_MAGENTA
 			FD_CIANO
+			FD_BRANCA
+
+			FDB_PRETA
+			FDB_VERMELHA
+			FDB_VERDE
+			FDB_AMARELA
+			FDB_AZUL
+			FDB_MAGENTA
+			FDB_CIANO
+			FDB_BRANCA
 
 			# Efeitos
 			UNDERLINE
@@ -159,7 +194,6 @@ class shell_style:
 			# Reset
 			NONE
 		'''
-		pass
 
 	def extrair_tupla(self, t: tuple, s: str)->str:
 		'''Converte uma Tupla para String concatenando um separador
@@ -216,6 +250,8 @@ class shell_style:
 		'''
 		try:
 			return input(f'{cor}{efeito}{texto}{br}{self.NONE}')
+		except KeyboardInterrupt as ki:
+			pass
 		except Exception as er:
 			print('shell_style.input:')
 			print(er)
@@ -228,8 +264,8 @@ class shell_style:
 			tx_erro (str): Texto do erro
 		'''
 		try:
-			self.print(f'{ss.FD_VERMELHA}{ss.CF_BRANCA} {funcao} {ss.NONE}')
-			self.print(tx_erro, cor=ss.CF_VERMELHA)
+			self.print(f'{self.FD_VERMELHA}{self.CF_BRANCA} {funcao} {self.NONE}')
+			self.print(tx_erro, cor=self.CF_VERMELHA)
 		except Exception as er:
 			print('shell_style.erro:')
 			print(er)
