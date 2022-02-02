@@ -269,3 +269,52 @@ ss.print('Jozé ambrósio', '42 Anos', cor=ss.CF_VERMELHA, efeito=ss.ITALICO)
 
 ss.input('Digite seu nome:', cor=ss.CF_VERMELHA, efeito=ss.ITALICO)
 ~~~
+
+### rangel.tabela
+~~~python
+# tabela_colorida( nome_das_colunas, alinhamento, lista )
+tabela_colorida(
+    ('nome_coluna1', 'nome_coluna2'),
+    ('e', 'd'),
+    [
+        ('Josém Abmrósio', 'joseamb@gmail.com'),
+        ('Maria Joaquina', 'mariajoaquina@hotmail.com')
+    ]
+)
+# Resposta uma tabela colorida de amarelo e letras brancas:
+# | nome_coluna1    |               nome_coluna2 |
+# |-----------------|----------------------------|
+# | Josém Abmrósio  |          joseamb@gmail.com |
+# | Maria Joaquina  |  mariajoaquina@hotmail.com |
+
+# tabela( nome_das_colunas, alinhamento, lista )
+tabela(
+    ('nome_coluna1', 'nome_coluna2'),
+    ('e', 'd'),
+    [
+        ('Josém Abmrósio', 'joseamb@gmail.com'),
+        ('Maria Joaquina', 'mariajoaquina@hotmail.com')
+    ]
+)
+# Resposta:
+# | nome_coluna1    |               nome_coluna2 |
+# |-----------------|----------------------------|
+# | Josém Abmrósio  |          joseamb@gmail.com |
+# | Maria Joaquina  |  mariajoaquina@hotmail.com |
+
+# tabela( nome_das_colunas, alinhamento, lista, html )
+tabela_texto(
+    ('nome_coluna1', 'nome_coluna2'),
+    ('e', 'd'),
+    [
+        ('Josém Abmrósio', 'joseamb@gmail.com'),
+        ('Maria Joaquina', 'mariajoaquina@hotmail.com')
+    ],
+    False
+)
+# Resposta em String ou HTML caso o último parâmetro seja verdadeiro:
+# | nome_coluna1    |               nome_coluna2 |
+# |-----------------|----------------------------|
+# | Josém Abmrósio  |          joseamb@gmail.com |
+# | Maria Joaquina  |  mariajoaquina@hotmail.com |
+~~~
