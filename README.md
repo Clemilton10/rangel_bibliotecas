@@ -273,6 +273,8 @@ ss.input('Digite seu nome:', cor=ss.CF_VERMELHA, efeito=ss.ITALICO)
 ### rangel.tabela
 ~~~python
 # tabela_colorida( nome_das_colunas, alinhamento, lista )
+# nome_das_colunas (opcional) 
+# alinhamento: e (à esquerda), c (ao centro), d (à direita)
 tabela_colorida(
     ('nome_coluna1', 'nome_coluna2'),
     ('e', 'd'),
@@ -288,6 +290,8 @@ tabela_colorida(
 # | Maria Joaquina  |  mariajoaquina@hotmail.com |
 
 # tabela( nome_das_colunas, alinhamento, lista )
+# nome_das_colunas (opcional) 
+# alinhamento: e (à esquerda), c (ao centro), d (à direita)
 tabela(
     ('nome_coluna1', 'nome_coluna2'),
     ('e', 'd'),
@@ -303,6 +307,9 @@ tabela(
 # | Maria Joaquina  |  mariajoaquina@hotmail.com |
 
 # tabela( nome_das_colunas, alinhamento, lista, html )
+# nome_das_colunas (opcional) 
+# alinhamento: e (à esquerda), c (ao centro), d (à direita)
+# html: True (para retornar HTML), False (para retornar String)
 tabela_texto(
     ('nome_coluna1', 'nome_coluna2'),
     ('e', 'd'),
