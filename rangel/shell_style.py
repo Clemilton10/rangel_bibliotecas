@@ -1,10 +1,12 @@
-import ctypes;
-kernel32 = ctypes.WinDLL('kernel32');
-hStdOut = kernel32.GetStdHandle(-11);
-mode = ctypes.c_ulong();
-kernel32.GetConsoleMode(hStdOut, ctypes.byref(mode));
-mode.value |= 4;
-kernel32.SetConsoleMode(hStdOut, mode)
+from sys import platform
+if 'win' in platform:
+	import ctypes;
+	kernel32 = ctypes.WinDLL('kernel32');
+	hStdOut = kernel32.GetStdHandle(-11);
+	mode = ctypes.c_ulong();
+	kernel32.GetConsoleMode(hStdOut, ctypes.byref(mode));
+	mode.value |= 4;
+	kernel32.SetConsoleMode(hStdOut, mode)
 
 class shell_style:
 
