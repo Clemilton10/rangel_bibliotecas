@@ -23,7 +23,7 @@ from setuptools import find_packages, setup
 setup(
 	name='rangel',
 	packages=find_packages(),
-	version='0.3.8',
+	version='0.3.9',
 	description='Bibliotecas Rangel',
 	long_description = 'Várias Bibliotecas pra faciliar o dia a dia',
 	author='Clemas',
@@ -35,7 +35,7 @@ setup(
 	url = 'https://github.com/Clemilton10/rangel_bibliotecas',
 	project_urls = {
 		'Código fonte': 'https://github.com/Clemilton10/rangel_bibliotecas',
-		'Download': 'https://github.com/Clemilton10/rangel_bibliotecas/rangel_0.3.8.zip'
+		'Download': 'https://github.com/Clemilton10/rangel_bibliotecas/rangel_0.3.9.zip'
 	},
 	keywords = 'Bibliotecas úteis para o dia a dia',
 	classifiers = [

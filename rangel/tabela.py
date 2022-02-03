@@ -47,13 +47,13 @@ def tabela_colorida(colunas=(), alinhamento=(), dados=[]):
 			for j, d in enumerate(tmp_dados[0]):
 				if alinhamento != ():
 					if alinhamento[j] == 'd':
-						linha += f'{ss.CF_AMARELA}{ss.NEGRITO}{colunas[j]: >{lista_max[j]+1}}{ss.NONE} {ss.CF_AMARELA}| '
+						linha += f'{ss.CF_AMARELA}{ss.NEGRITO}{colunas[j]: >{lista_max[j]}}{ss.NONE} {ss.CF_AMARELA}| '
 					elif alinhamento[j] == 'c':
-						linha += f'{ss.CF_AMARELA}{ss.NEGRITO}{colunas[j]: ^{lista_max[j]+1}}{ss.NONE} {ss.CF_AMARELA}| '
+						linha += f'{ss.CF_AMARELA}{ss.NEGRITO}{colunas[j]: ^{lista_max[j]}}{ss.NONE} {ss.CF_AMARELA}| '
 					else:
-						linha += f'{ss.CF_AMARELA}{ss.NEGRITO}{colunas[j]: <{lista_max[j]+1}}{ss.NONE} {ss.CF_AMARELA}| '
+						linha += f'{ss.CF_AMARELA}{ss.NEGRITO}{colunas[j]: <{lista_max[j]}}{ss.NONE} {ss.CF_AMARELA}| '
 				else:
-					linha += f'{ss.CF_AMARELA}{ss.NEGRITO}{colunas[j]: <{lista_max[j]+1}} {ss.CF_AMARELA}| '
+					linha += f'{ss.CF_AMARELA}{ss.NEGRITO}{colunas[j]: <{lista_max[j]}} {ss.CF_AMARELA}| '
 			linha = linha[ 0: len(linha) - 1 ]
 			print(linha)
 
@@ -61,7 +61,7 @@ def tabela_colorida(colunas=(), alinhamento=(), dados=[]):
 			linha = '|-'
 			for j, d in enumerate(tmp_dados[0]):
 				nada = ''
-				linha += f'{nada:-<{lista_max[j]+1}}-|-'
+				linha += f'{nada:-<{lista_max[j]}}-|-'
 			linha = ss.CF_AMARELA + linha[ 0: len(linha) - 1 ] + ss.NONE
 			print(linha)
 
@@ -72,13 +72,13 @@ def tabela_colorida(colunas=(), alinhamento=(), dados=[]):
 				rw = str(l[j]).replace('\t', '').replace('\r', '').replace('➜', '>').replace('\n', '$')
 				if alinhamento != ():
 					if alinhamento[j] == 'd':
-						linha += f'{ss.CFB_BRANCA}{rw: >{lista_max[j]+1}} {ss.CF_AMARELA}| '
+						linha += f'{ss.CFB_BRANCA}{rw: >{lista_max[j]}} {ss.CF_AMARELA}| '
 					elif alinhamento[j] == 'c':
-						linha += f'{ss.CFB_BRANCA}{rw: ^{lista_max[j]+1}} {ss.CF_AMARELA}| '
+						linha += f'{ss.CFB_BRANCA}{rw: ^{lista_max[j]}} {ss.CF_AMARELA}| '
 					else:
-						linha += f'{ss.CFB_BRANCA}{rw: <{lista_max[j]+1}} {ss.CF_AMARELA}| '
+						linha += f'{ss.CFB_BRANCA}{rw: <{lista_max[j]}} {ss.CF_AMARELA}| '
 				else:
-					linha += f'{ss.CFB_BRANCA}{rw: <{lista_max[j]+1}} {ss.CF_AMARELA}| '
+					linha += f'{ss.CFB_BRANCA}{rw: <{lista_max[j]}} {ss.CF_AMARELA}| '
 			linha = linha[ 0: len(linha) - 1 ]
 			print(linha)
 
@@ -133,13 +133,13 @@ def tabela(colunas=(), alinhamento=(), dados=[]):
 			for j, d in enumerate(tmp_dados[0]):
 				if alinhamento != ():
 					if alinhamento[j] == 'd':
-						linha += f'{colunas[j]: >{lista_max[j]+1}} | '
+						linha += f'{colunas[j]: >{lista_max[j]}} | '
 					elif alinhamento[j] == 'c':
-						linha += f'{colunas[j]: ^{lista_max[j]+1}} | '
+						linha += f'{colunas[j]: ^{lista_max[j]}} | '
 					else:
-						linha += f'{colunas[j]: <{lista_max[j]+1}} | '
+						linha += f'{colunas[j]: <{lista_max[j]}} | '
 				else:
-					linha += f'{colunas[j]: <{lista_max[j]+1}} | '
+					linha += f'{colunas[j]: <{lista_max[j]}} | '
 			linha = linha[ 0: len(linha) - 1 ]
 			print(linha)
 
@@ -147,7 +147,7 @@ def tabela(colunas=(), alinhamento=(), dados=[]):
 			linha = '|-'
 			for j, d in enumerate(tmp_dados[0]):
 				nada = ''
-				linha += f'{nada:-<{lista_max[j]+1}}-|-'
+				linha += f'{nada:-<{lista_max[j]}}-|-'
 			linha = linha[ 0: len(linha) - 1 ]
 			print(linha)
 
@@ -158,13 +158,13 @@ def tabela(colunas=(), alinhamento=(), dados=[]):
 				rw = str(l[j]).replace('\t', '').replace('\r', '').replace('➜', '>').replace('\n', '$')
 				if alinhamento != ():
 					if alinhamento[j] == 'd':
-						linha += f'{rw: >{lista_max[j]+1}} | '
+						linha += f'{rw: >{lista_max[j]}} | '
 					elif alinhamento[j] == 'c':
-						linha += f'{rw: ^{lista_max[j]+1}} | '
+						linha += f'{rw: ^{lista_max[j]}} | '
 					else:
-						linha += f'{rw: <{lista_max[j]+1}} | '
+						linha += f'{rw: <{lista_max[j]}} | '
 				else:
-					linha += f'{rw: <{lista_max[j]+1}} | '
+					linha += f'{rw: <{lista_max[j]}} | '
 			linha = linha[ 0: len(linha) - 1 ]
 			print(linha)
 
@@ -222,13 +222,13 @@ def tabela_texto(colunas=(), alinhamento=(), dados=[], html=False):
 			for j, d in enumerate(tmp_dados[0]):
 				if alinhamento != ():
 					if alinhamento[j] == 'd':
-						linha += f'{colunas[j]: >{lista_max[j]+1}} | '
+						linha += f'{colunas[j]: >{lista_max[j]}} | '
 					elif alinhamento[j] == 'c':
-						linha += f'{colunas[j]: ^{lista_max[j]+1}} | '
+						linha += f'{colunas[j]: ^{lista_max[j]}} | '
 					else:
-						linha += f'{colunas[j]: <{lista_max[j]+1}} | '
+						linha += f'{colunas[j]: <{lista_max[j]}} | '
 				else:
-					linha += f'{colunas[j]: <{lista_max[j]+1}} | '
+					linha += f'{colunas[j]: <{lista_max[j]}} | '
 			linha = linha[ 0: len(linha) - 1 ]
 			txt += linha + '\n'
 
@@ -236,7 +236,7 @@ def tabela_texto(colunas=(), alinhamento=(), dados=[], html=False):
 			linha = '|-'
 			for j, d in enumerate(tmp_dados[0]):
 				nada = ''
-				linha += f'{nada:-<{lista_max[j]+1}}-|-'
+				linha += f'{nada:-<{lista_max[j]}}-|-'
 			linha = linha[ 0: len(linha) - 1 ]
 			txt += linha + '\n'
 
@@ -247,13 +247,13 @@ def tabela_texto(colunas=(), alinhamento=(), dados=[], html=False):
 				rw = str(l[j]).replace('\t', '').replace('\r', '').replace('➜', '>').replace('\n', '$')
 				if alinhamento != ():
 					if alinhamento[j] == 'd':
-						linha += f'{rw: >{lista_max[j]+1}} | '
+						linha += f'{rw: >{lista_max[j]}} | '
 					elif alinhamento[j] == 'c':
-						linha += f'{rw: ^{lista_max[j]+1}} | '
+						linha += f'{rw: ^{lista_max[j]}} | '
 					else:
-						linha += f'{rw: <{lista_max[j]+1}} | '
+						linha += f'{rw: <{lista_max[j]}} | '
 				else:
-					linha += f'{rw: <{lista_max[j]+1}} | '
+					linha += f'{rw: <{lista_max[j]}} | '
 			linha = linha[ 0: len(linha) - 1 ]
 			txt += linha + '\n'
 
